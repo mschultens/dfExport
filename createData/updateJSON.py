@@ -31,10 +31,10 @@ def main(argv):
         trainingFile = open('input/' + botname + '_Training/trainingInput' + name + '.txt', 'r')
         trainSet = [line for line in trainingFile.readlines()] 
     
-        answer = row['answer']
+        answer = row['answer_de']
     
-        with open('input/Messebot/intents/request.' + name + '.json') as f:
-            topdict = json.load(f)
+    #    with open('input/Messebot/intents/request.' + name + '.json') as f:
+    #        topdict = json.load(f)
     #    messagedict = {"type": 0, "lang": "de", "speech": answer}
     #    responsedict['messages'] = [messagedict]
     #   
@@ -45,19 +45,18 @@ def main(argv):
     #    #mydict['id'] = uuid
     
     
-        with open(inputpath + 'request.' + name + '.json') as f:
-            data = json.load(f)
-        tempdict = dict(data)
-        tempdict.update(topdict)
-        
-        with open(outputpath + 'request.' + name + '.json', 'w', encoding='utf-8-sig') as f:
-            json.dump(tempdict, f, indent=4, ensure_ascii=False)
+#        with open(inputpath + 'request.' + name + '.json') as f:
+#            data = json.load(f)
+#        tempdict = dict(data)
+#        tempdict.update(topdict)
+#        
+#        with open(outputpath + 'request.' + name + '.json', 'w', encoding='utf-8-sig') as f:
+#            json.dump(tempdict, f, indent=4, ensure_ascii=False)
     
         with open(inputpath + 'request.' + name + '_usersays_de.json', 'r', encoding='utf-8-sig') as f:
             traindata = json.load(f)
         for sent in trainSet:
             traindata.append({"data": [{"text": sent}]})
-            
         with open(outputpath + 'request.' + name + '_usersays_de.json', 'w', encoding='utf-8-sig') as f:
             json.dump(traindata, f, indent=4, ensure_ascii=False)
             

@@ -41,7 +41,7 @@ def main(argv):
             trainList.append({"data": [{"text": sent}]})
     
     
-        answer = row['answer']
+        answer = row['answer_de']
     
         topdict = dict()
         responsedict = dict()
@@ -58,7 +58,7 @@ def main(argv):
             json.dump(topdict, f, indent=4, ensure_ascii=False)
     
             
-        with open(inputpath + 'request.' + name + '_usersays_de.json', 'w', encoding='utf-8-sig') as f:
+        with open(outputpath + 'request.' + name + '_usersays_de.json', 'w', encoding='utf-8-sig') as f:
             json.dump(trainList, f, indent=4, ensure_ascii=False)
             
             
